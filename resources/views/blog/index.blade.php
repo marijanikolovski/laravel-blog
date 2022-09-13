@@ -16,18 +16,17 @@
     </div>
     <div>
         <h2 class="text-gray-700 font-bold text-5xl pb-4">
-            Learn how to write Larave code
+            {{ $post->title }}
         </h2>
 
         <span class="text-gray-500">
-            By <span class="font-bold italic text-gray-800">Code With Marija</span>
-        </span>, 1 day ago
-
+            By <span class="font-bold italic text-gray-800">{{ $post->user->name }}</span>
+        </span>, {{ date('jS M Y', strtotime($post->update_at)) }}
         <p class="text-xl text-gray-700 mb-10 pt-8 pb-10 leading-8 font-light" style="  overflow: hidden;
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 2;">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non, molestias! Veniam doloremque, quaerat ea eius nisi perferendis officia corporis vel consequatur ex quam quibusdam ut unde tempora quae dolorem. Laudantium?
+            {{ $post->description }}
         </p>
 
         <a href="" class="uppercase bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
