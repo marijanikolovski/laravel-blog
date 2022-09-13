@@ -30,7 +30,7 @@
 @foreach ( $posts as $post )
 <div class="sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-15 border-b border-gray-200">
     <div>
-        <img src="https://cdn.pixabay.com/photo/2016/03/27/20/00/coffee-1284041_960_720.jpg" alt="">
+        <img src="{{ asset('image/'. $post->image_path) }}" alt="">
     </div>
     <div>
         <h2 class="text-gray-700 font-bold text-5xl pb-4">
@@ -47,9 +47,21 @@
             {{ $post->description }}
         </p>
 
-        <a href="" class="uppercase bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
+        <a href="/blog/{{ $post->slug }}" class="uppercase bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
             Keep Reading
         </a>
+
+        @if (isset(Auth::user()->id) && Auth::user()->id == $post->user_id)
+            <span class="float-right">
+                <a 
+                    href="/blog/{{ $post->slug }}/edit"
+                    class="text-gray-700 italic hover:text-gray-900 pb-1 border-b-2"
+                >
+                    Edit
+                </a>
+            </span>
+        @endif
+
     </div>
 </div>
 @endforeach
