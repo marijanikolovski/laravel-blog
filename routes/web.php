@@ -17,7 +17,7 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', [PagesController::class, 'index']);
 
-Route::resource('/blog', PostControler::class);
+Route::resource('/blog', PostController::class);
 
 Auth::routes();
 
